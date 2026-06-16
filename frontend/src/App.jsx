@@ -19,7 +19,7 @@ function App() {
       const { data } = await axios.get(API);
       setUsers(data);
     } catch (error) {
-      toast.error('Failed to fetch user');
+      toast.error('Failed to fetch user', error);
     }
   };
 
@@ -86,7 +86,7 @@ function App() {
 
       fetchUsers();
     } catch (error) {
-      toast.error('Delete failed');
+      toast.error('Delete failed', error);
     }
   };
 
