@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import { UserPlus, Pencil, Trash2, Users, Save } from "lucide-react";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import { UserPlus, Pencil, Trash2, Users, Save } from 'lucide-react';
 
 function App() {
   const API = import.meta.env.VITE_API_URL;
@@ -10,8 +10,8 @@ function App() {
   const [editingId, setEditingId] = useState(null);
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    name: '',
+    email: '',
   });
 
   const fetchUsers = async () => {
@@ -19,7 +19,7 @@ function App() {
       const { data } = await axios.get(API);
       setUsers(data);
     } catch (error) {
-      toast.error("Failed to fetch users");
+      toast.error('Failed to fetch user');
     }
   };
 
@@ -38,30 +38,30 @@ function App() {
     e.preventDefault();
 
     if (!formData.name || !formData.email) {
-      return toast.warning("All fields are required");
+      return toast.warning('All fields are required');
     }
 
     try {
       if (editingId) {
         await axios.put(`${API}/${editingId}`, formData);
 
-        toast.success("User updated successfully");
+        toast.success('User updated successfully');
       } else {
         await axios.post(API, formData);
 
-        toast.success("User created successfully");
+        toast.success('User created successfully');
       }
 
       setFormData({
-        name: "",
-        email: "",
+        name: '',
+        email: '',
       });
 
       setEditingId(null);
 
       fetchUsers();
     } catch (error) {
-      toast.error(error.response?.data?.message || "Something went wrong");
+      toast.error(error.response?.data?.message || 'Something went wrong');
     }
   };
 
@@ -75,36 +75,36 @@ function App() {
   };
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete?");
+    const confirmDelete = window.confirm('Are you sure you want to delete?');
 
     if (!confirmDelete) return;
 
     try {
       await axios.delete(`${API}/${id}`);
 
-      toast.success("User deleted successfully");
+      toast.success('User deleted successfully');
 
       fetchUsers();
     } catch (error) {
-      toast.error("Delete failed");
+      toast.error('Delete failed');
     }
   };
 
   return (
     <div
       style={{
-        maxWidth: "900px",
-        margin: "40px auto",
-        padding: "20px",
-        fontFamily: "Arial",
+        maxWidth: '900px',
+        margin: '40px auto',
+        padding: '20px',
+        fontFamily: 'Arial',
       }}
     >
       <ToastContainer />
 
       <h1
         style={{
-          textAlign: "center",
-          marginBottom: "30px",
+          textAlign: 'center',
+          marginBottom: '30px',
         }}
       >
         <Users size={30} />
@@ -114,10 +114,10 @@ function App() {
       <form
         onSubmit={handleSubmit}
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          marginBottom: "30px",
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
+          marginBottom: '30px',
         }}
       >
         <input
@@ -127,8 +127,8 @@ function App() {
           value={formData.name}
           onChange={handleChange}
           style={{
-            padding: "12px",
-            fontSize: "16px",
+            padding: '12px',
+            fontSize: '16px',
           }}
         />
 
@@ -139,17 +139,17 @@ function App() {
           value={formData.email}
           onChange={handleChange}
           style={{
-            padding: "12px",
-            fontSize: "16px",
+            padding: '12px',
+            fontSize: '16px',
           }}
         />
 
         <button
           type="submit"
           style={{
-            padding: "12px",
-            cursor: "pointer",
-            fontSize: "16px",
+            padding: '12px',
+            cursor: 'pointer',
+            fontSize: '16px',
           }}
         >
           {editingId ? (
@@ -171,7 +171,7 @@ function App() {
         width="100%"
         cellPadding="10"
         style={{
-          borderCollapse: "collapse",
+          borderCollapse: 'collapse',
         }}
       >
         <thead>
@@ -193,8 +193,8 @@ function App() {
                   <button
                     onClick={() => handleEdit(user)}
                     style={{
-                      marginRight: "10px",
-                      cursor: "pointer",
+                      marginRight: '10px',
+                      cursor: 'pointer',
                     }}
                   >
                     <Pencil size={18} />
@@ -203,7 +203,7 @@ function App() {
                   <button
                     onClick={() => handleDelete(user._id)}
                     style={{
-                      cursor: "pointer",
+                      cursor: 'pointer',
                     }}
                   >
                     <Trash2 size={18} />
@@ -216,7 +216,7 @@ function App() {
               <td
                 colSpan="3"
                 style={{
-                  textAlign: "center",
+                  textAlign: 'center',
                 }}
               >
                 No Users Found
