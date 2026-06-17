@@ -108,7 +108,7 @@ function App() {
         }}
       >
         <Users size={30} />
-        &nbsp; MERN CRUD APP
+        &nbsp; MERN CRUD APPLICATION
       </h1>
 
       <form
