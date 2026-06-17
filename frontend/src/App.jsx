@@ -5,7 +5,7 @@ import { UserPlus, Pencil, Trash2, Users, Save } from 'lucide-react';
 
 function App() {
   const API = import.meta.env.VITE_API_URL;
-
+  console.log('API URL:', API);
   const [users, setUsers] = useState([]);
   const [editingId, setEditingId] = useState(null);
 
