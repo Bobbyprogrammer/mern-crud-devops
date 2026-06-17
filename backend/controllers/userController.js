@@ -1,4 +1,4 @@
-import { User } from "../models/User.js";
+import { User } from '../models/User.js';
 
 // Create User
 export const createUser = async (req, res) => {
@@ -33,7 +33,7 @@ export const getUser = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        message: "User not found",
+        message: 'Users not found',
       });
     }
 
@@ -54,7 +54,7 @@ export const updateUser = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        message: "User not found",
+        message: 'User not found',
       });
     }
 
@@ -73,12 +73,12 @@ export const deleteUser = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        message: "User not found",
+        message: 'User not found',
       });
     }
 
     res.status(200).json({
-      message: "User deleted successfully",
+      message: 'User deleted successfully',
     });
   } catch (error) {
     res.status(500).json({
