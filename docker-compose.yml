@@ -9,7 +9,11 @@ services:
       - "8000:8000"
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://13.58.10.180:8000/api
+
     container_name: frontend
     restart: always
     env_file:
